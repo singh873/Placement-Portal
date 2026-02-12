@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="l_form">
+
+        <h2> Welocome, Login Here ! </h2>
+    
+        <form action="/login" method="POST">
+
+            <label for="email"> Enter Email Id </label> <br>
+            <input id="email" type="email" name="email"> <br>
+
+            <label for="pass"> Enter Password </label> <br>
+            <input id="pass" type="password" name="pwd"> <br>
+
+            <input class="btn" type="submit" value="Login">
+
+        </form>
+
+        <p>New Student ? <a href="/register">Register as Student </a></p>
+        <p>New Company ? <a href="/comp_register">Register as Company </a></p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <p style="color:green; margin-top:10px;">
+                    {{ message }}
+                </p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    </div>
+    
+</body>
+</html>

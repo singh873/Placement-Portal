@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class="l_form">
+        <h2> Welocome, Register Here ! </h2>
+
+        <form action="/register" method="POST">
+
+            <label for="name"> Enter Your Full Name </label> 
+            <input id="name" type="text" name="f_name">
+
+            <label for="email"> Enter Your Email Id </label> 
+            <input id="email" type="email" name="email"> 
+
+            <label for="pass"> Create Password </label> 
+            <input id="pass" type="password" name="pwd">  
+
+            <input class="btn" type="submit" value="Register">
+        </form>
+
+        <p>Already have an Account? <a href="/login">Login Now</a></p>
+
+    </div>
+</body>
+</html>

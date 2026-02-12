@@ -1,0 +1,37 @@
+.l_form {
+    border: 5px solid wheat;
+    padding: 25px;
+    width: 280px;
+    background-color: white;
+    align-items: center;
+    border-radius: 25px;
+    /* from ko center krega ) */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.l_form h1{
+    text-align: center;
+}
+
+.l_form a {
+    color: blue;
+    text-decoration: none;
+}
+
+/* Inputs */
+.l_form input {
+    width: 100%;
+    /* box ke ander space dega */
+    padding: 8px;  
+    margin: 8px 0 15px 0;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: wheat;
+    font-weight: bold;
+}
