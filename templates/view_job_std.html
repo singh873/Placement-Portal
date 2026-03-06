@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Job </title>
+
+    <link rel="stylesheet" href="/static/student.css">
+</head>
+<body>
+
+
+
+    <!-- Header -->
+    <div class="top-bar">
+        <h3> Companay : {{ this_comp.name }} </h3>
+        <div>
+            <a href="/std_prof_update/{{std_id}}" class="btn-black"> Update Profile </a>
+            <a href="/history/{{std_id}}" class="btn-black"> History </a>
+            <a href="/login" class="btn-red"> Logout </a>
+        </div>
+    </div>
+
+    <!-- Ongoing Jobs -->
+    <h3>
+        Ongoing Jobs
+        <span class="right-btn">
+            <a href="/student_dash/{{std_id}}" class="btn btn-black"> Go Back </a>
+        </span>
+    </h3>
+
+    <table>
+        <tr>
+            <th> Job Id </th>
+            <th> Job Title </th>
+            <th> Location </th>
+            <th> Job Deadline </th>
+            <th>Actions</th>
+        </tr>
+
+        {% for i in this_comp_jobs %}
+        {% if i.job_status == "approved" %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i.job_title }}</td>
+            <td>{{ i.location }}</td>
+            <td>{{ i.job_deadline }}</td>
+            <td>
+                <a href="/job_details_std/{{i.id}}/{{std_id}}" class="btn btn-green"> View Job Details </a>
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+    <!-- Closed Jobs -->
+    <h3>Closed Jobs</h3>
+
+    <table>
+        <tr>
+            <th> Job Id </th>
+            <th> Job Title </th>
+            <th> Salary </th>
+            <th> Location </th>
+            <th> Job Deadline </th>
+        </tr>
+        {% for i in this_comp_jobs %}
+        {% if i.job_status == "complete" %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i.job_title }}</td>
+            <td>{{ i.salary }}</td>
+            <td>{{ i.location }}</td>
+            <td>{{ i.job_deadline }}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+
+</body>
+</html>

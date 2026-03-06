@@ -1,0 +1,108 @@
+body {
+    background: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+.job-card {
+    width: 350px;
+    background: white;
+    border: 5px solid wheat;
+    display: flex;
+    padding: 25px;
+    border-radius: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+.label {
+    color: blue;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.value {
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 6px;
+    border: none;
+    margin: 5px;               
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* Red Button */
+.btn-red {
+    background-color: red;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+/* Green Button */
+.btn-green {
+    background-color: green;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+/* Blue Button */
+.btn-blue {
+    background-color: rgb(18, 159, 215);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+/* Black Button */
+.btn-black {
+    background-color: black;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+.actions {
+    margin-top: 20px;
+}
+
+.status-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.status-dropdown {
+    padding: 8px;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 13px;
+    width: 120px;
+    height: 40px;
+}
+
+
+
+
+

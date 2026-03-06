@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Create New Job</title>
+</head>
+<body>
+    <div class="l_form">
+        <h2>  Create New Job ! </h2>
+
+        <form action="/create_job/{{comp_id}}" method="POST">
+
+            <label for="name"> Enter Job Title </label> 
+            <input id="name" type="text" name="job_title">
+
+            <label for="email"> Enter job Description </label> 
+            <input id="email" type="text" name="job_desc"> 
+
+            <label for="elig"> Enter Eligibility </label> 
+            <input id="elig" type="text" name="elig">
+            
+            <label for="sal"> Enter Salary </label> 
+            <input id="sal" type="text" name="sal"> 
+            
+            <label for="loca"> Enter Location </label> 
+            <input id="loca" type="text" name="loca">
+
+            <label for="dead"> Job Deadline </label> 
+            <input id="dead" type="date" name="deadline">
+
+            <input class="btn" type="submit" value="Create Job">
+        </form>
+
+    </div>
+</body>
+</html>

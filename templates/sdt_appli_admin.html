@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> View Student Applications </title>
+    <link rel="stylesheet" href="/static/Job_details.css">
+</head>
+<body>
+
+<div class="job-card">
+
+    <div class="job-left">
+        <h2> Student Applications </h2>
+        
+        <p><strong class="label">Student Name:</strong> {{ this_std.full_name }}</p>
+
+        <p><strong class="label">Education:</strong> {{ this_std.education }}</p>
+
+        <p><strong class="label">CGPA:</strong> {{ this_std.cgpa }}</p>
+
+        <p><strong class="label">Student Address:</strong> {{ this_std.address }}</p> 
+
+        <p><strong class="label">Linkedin Id:</strong> {{ this_std.linkdin }}</p>
+
+        <p><strong class="label">Github Id:</strong> {{ this_std.github }}</p>
+
+        <p><strong class="label">Company Name:</strong> {{ this_job.company.name }}</p>
+
+        <p><strong class="label">Job Title:</strong> {{ this_job.job_title }}</p>
+
+        <p><strong class="label">Job Location:</strong> {{ this_job.location }}</p>
+
+        <p><strong class="label">Salary:</strong> {{ this_job.salary }}</p> <br>
+
+        <div class="actions">
+            <a href="/admin_dash" class="btn btn-black">Go Back</a>
+        </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>

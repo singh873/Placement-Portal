@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Company Dashboard </title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/company.css">
+
+</head>
+<body>
+
+
+
+    <!-- Header -->
+    <div class="top-bar">
+        <h3> <i class="fa-solid fa-briefcase"></i> Welcome {{ this_comp.name }} </h3>
+        <a href="/login" class="btn-red">Logout</a>
+    </div>
+
+    <!-- Upcoming Drives -->
+    <h3>
+        Upcoming Jobs
+        <span class="right-btn">
+            <a href="/create_job/{{this_comp.id}}" class="btn btn-green">Create Job</a> 
+        </span>
+    </h3>
+
+    <table>
+        <tr>
+            <th> Job Id </th>
+            <th> Job Title </th>
+            <th> Eligibility </th>
+            <th> Location </th>
+            <th> Salary </th>
+            <th> Job Status </th>
+            <th>Actions</th>
+        </tr>
+        {% for i in comp_job %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.job_title }}</td>
+            <td>{{ i.eligibility }}</td>
+            <td>{{ i.location }}</td>
+            <td>{{ i.salary}}</td>
+            <td>{{ i.job_status}}</td>
+            <td>
+                <a href="/comp_appli/{{i.id}}/{{this_comp.id}}" class="btn btn-blue"> View Application </a>
+                <a href="/update_job/{{i.id}}/{{this_comp.id}}" class="btn btn-black"> Update Job </a>
+                <a href="/mark_comp/{{i.id}}" class="btn btn-green"> Mark as complete </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Closed Jobs -->
+    <h3>Closed Jobs </h3>
+
+    <table>
+        <tr>
+            <th> Job Id </th>
+            <th> Job Title </th>
+            <th> Eligibility </th>
+            <th> Location </th>
+            <th> Salary </th>
+            <th> Job Status </th>
+            <th>Actions</th>
+        </tr>
+        {% for i in completed_job %}
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.job_title }}</td>
+            <td>{{ i.eligibility }}</td>
+            <td>{{ i.location }}</td>
+            <td>{{ i.salary}}</td>
+            <td>{{ i.job_status}}</td>
+            <td>
+                <a href="/update_job/{{i.id}}/{{this_comp.id}}" class="btn btn-black"> Update Job </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Student Applications -->
+    <h3>All Recived Applications</h3>
+    <table>
+        <tr>
+            <th>Applications No.</th>
+            <th>Student Name</th>
+            <th>Job Title</th>
+            <th>Job Location</th>
+            <th>Application Status</th>
+            <th>Apply Date</th>
+            <th>Action</th>
+        </tr>
+        {%  for i in std_application %}
+        {% if i.jobs.company.id == this_comp.id %}      
+        <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.user.full_name }}</td>
+            <td>{{ i.jobs.job_title }}</td>
+            <td>{{ i.jobs.location }}</td>
+            <td>{{ i.status }}</td>
+            <td>{{ i.applied_date }}</td>
+            <td>
+                <a href="/review_std_appli/{{i.student_id}}/{{i.job_id}}" class="btn btn-blue"> Review Application </a>
+                <a href="/view_all_std_app/{{i.user.id}}/{{i.jobs.id}}" class="btn btn-green">view Resume</a>
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job View</title>
+    <link rel="stylesheet" href="/static/Job_details.css">
+</head>
+<body>
+
+<div class="job-card">
+
+    <div >
+        <h2> Company: {{ view_job.company.name }}</h2>
+        
+
+        <p class="label"> Job Title </p>
+        <p class="value">{{ view_job.job_title }}</p>
+
+        <p class="label">Job Description</p>
+        <p class="value">{{ view_job.job_description }}</p>
+
+        <p><strong class="label">Salary:</strong> {{ view_job.salary }}</p>
+        <p><strong class="label">Location:</strong> {{ view_job.location }}</p>
+
+        <div class="actions">
+            
+            {% if not allraedy_apply %}
+                <form action="/apply_job/{{ view_job.id }}/{{ std_id }}" method="POST">
+                    <button type="submit" class="btn btn-green">
+                        Apply
+                    </button>
+                    <a href="/view_job/{{view_job.company_id}}/{{std_id}}" class="btn btn-black">
+                        Go Back
+                    </a>
+                </form>
+            {% else %}
+                <a href="/view_job/{{view_job.company_id}}/{{std_id}}" class="btn btn-black">
+                    Go Back
+                </a>
+            {% endif %}
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <p style="color:green; margin-top:10px;">
+                        {{ message }}
+                    </p>
+                    {% endfor %}
+                {% else %}
+                    {% if allraedy_apply %}
+                    <p style="color:green; margin-top:10px;">
+                        You have already applied for this job.
+                    </p>
+                    {% endif %}
+                {% endif %}
+            {% endwith %}
+                            
+        </div>
+
+
+    </div>
+
+    
+
+</div>
+
+</body>
+</html>

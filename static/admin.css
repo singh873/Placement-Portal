@@ -1,0 +1,150 @@
+/* Top bar layout */
+body{
+    background: white;
+}
+
+.top-bar {
+    background: green;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid black;
+}
+
+/* Search container */
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Form inside search box */
+.search-box form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Common height */
+.search-box select,
+.search-box input[type="text"],
+.search-box input[type="submit"],
+.btn-red {
+    height: 40px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Dropdown */
+.search-box select {
+    padding: 0 12px;
+    border: 1px solid #999;
+    background: white;
+}
+
+/* Input field */
+.search-box input[type="text"] {
+    padding: 0 14px;
+    width: 240px;
+    border: 1px solid #aaa;
+    transition: 0.3s ease;
+}
+
+/* Input focus effect */
+.search-box input[type="text"]:focus {
+    outline: none;
+    border-color: #129fd7;
+    box-shadow: 0 0 4px rgba(18,159,215,0.4);
+}
+
+/* Search button */
+.search-box input[type="submit"] {
+    padding: 0 18px;
+    border: none;
+    cursor: pointer;
+}
+
+
+h3 {
+    margin: 15px 0 5px;
+    
+}
+
+/* Create Drive button */
+.right-btn {
+    float: right;
+    margin-bottom: 15px;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #aaa;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: wheat;
+}
+
+/* Actions column same width */
+th:last-child,
+td:last-child {
+    width: 230px;              
+    white-space: nowrap; 
+}
+
+/*  Button size increase */
+.btn-red {
+    background-color: red;
+    color: white;
+    padding: 0 18px;     /* vertical padding hata diya */
+    height: 40px;        /* fixed height */
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;   /* inline-flex use karo */
+    align-items: center;    /* vertical center */
+    justify-content: center;
+}
+
+
+.btn-green {
+    background-color: green;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin: 4px 0;
+}
+
+.btn-blue {
+    background-color: rgb(18, 159, 215);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin: 4px 0;
+}
+
+.btn-black {
+    background-color: black;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 500;
+}
+

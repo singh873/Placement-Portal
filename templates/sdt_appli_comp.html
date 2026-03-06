@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Review Student Applications </title>
+    <link rel="stylesheet" href="/static/Job_details.css">
+</head>
+<body>
+
+<div class="job-card">
+
+    <div class="job-left">
+        <h2> Review Student Applications </h2>
+        
+        <p><strong class="label">Student Name:</strong> {{ this_std.full_name }}</p>
+
+        <p><strong class="label">Education:</strong> {{ this_std.education }}</p>
+
+        <p><strong class="label">CGPA:</strong> {{ this_std.cgpa }}</p>
+
+        <p><strong class="label">Address:</strong> {{ this_std.address }}</p> 
+
+        <p><strong class="label">Hobby :</strong> {{ this_std.hobby }}</p>
+
+        <p><strong class="label">Job Title:</strong> {{ this_job.job_title }}</p> 
+
+        <div class="actions">
+
+            <!-- Status Update Form -->
+            <form  action="/update_status/{{this_job.id}}/{{this_std.id}}" class="status-form" method="POST">
+                <select name="status" class="status-dropdown">
+                    <option value="">Select Status</option>
+                    <option value="shortlisted">Shortlist</option>
+                    <option value="selected">Selected</option>
+                    <option value="rejected">Reject</option>
+                </select>
+
+                <input type="submit" value="Update" class="btn btn-blue">
+            </form>
+
+            <!-- Back Button -->
+            <a href="/comp_appli/{{this_job.id}}/{{this_job.company_id}}" class="btn btn-black"> Go Back </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

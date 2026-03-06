@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Student Applications </title>
+
+    <link rel="stylesheet" href="/static/company.css">
+</head>
+<body>
+
+
+
+    <!-- Header -->
+    <div class="top-bar">
+        <h3>Welcome {{this_comp.name}} </h3>
+        <a href="/login" class="btn-red">Logout</a>
+    </div>
+
+    <h3> Job Title : {{ this_job.job_title }}</h3> 
+    <h3>
+        Recived Applications
+        <span class="right-btn">
+            <a href="/comp_dash/{{this_comp.id}}" class="btn btn-black">Go Back</a> 
+        </span>
+    </h3>
+    
+
+    <table>
+        <tr>
+            <th> Sn No. </th>
+            <th> Student Name </th>
+            <th> Actions </th>
+        </tr>
+        {% for i in this_application %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i.user.full_name }}</td>
+            <td>
+                <a href="/review_std_appli/{{i.student_id}}/{{i.job_id}}" class="btn btn-blue"> Review Application </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+
+</body>
+</html>

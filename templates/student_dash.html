@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard </title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/student.css">
+
+</head>
+<body>
+
+
+
+    <!-- Header -->
+    <div class="top-bar">
+        <h3> <i class="fa-solid fa-user"></i> Welcome {{ this_student.full_name }} </h3>
+        <div>
+            <a href="/std_prof_update/{{this_student.id}}" class="btn-black"> Update Profile </a>
+            <a href="/history/{{this_student.id}}" class="btn-black"> History </a>
+            <a href="/login" class="btn-red"> Logout </a>
+        </div>
+    </div>
+
+    <!-- Upcoming Jobs -->
+    <h3>
+        Hiring Companay
+    </h3>
+
+    <table>
+        <tr>
+            <th> Sn No.</th>
+            <th> Companay Name </th>
+            <th> Action </th>
+        </tr>
+        {% for i in active_comp %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i.name }}</td>
+            <td>
+                <a href="/view_job/{{i.id}}/{{this_student.id}}" class="btn btn-blue"> View Jobs </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Applid Jobs -->
+    <h3>Applid Jobs</h3>
+
+    <table>
+        <tr>
+            <th>Sr No.</th>
+            <th>Companay Name</th>
+            <th>Job Title</th>
+            <th> Date </th>
+            <th> Current Status </th>
+        </tr>
+
+        {% for i in appiled_jobs %}
+
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i.jobs.company.name}}</td>
+            <td>{{i.jobs.job_title}}</td>
+            <td>{{i.applied_date}}</td>
+            <td>{{i.status}}</td>
+        </tr>
+
+        {% endfor %}
+        
+    </table>
+
+    
+</body>
+</html>

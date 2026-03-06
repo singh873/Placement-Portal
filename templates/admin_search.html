@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/admin.css">
+    <title>Admin Search</title>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    <h2>Welcome {{ admin.full_name }}</h2>
+
+    <div class="search-box">
+        <form action="/admin_search/{{admin.id}}" method="GET" style="display:flex; gap:10px;">
+
+            <input type="text" name="search" placeholder="Search by name, id, email" required>
+
+            <select name="key" required>
+                <option value="">Select</option>
+                <option value="student">Student</option>
+                <option value="company">Company</option>
+            </select>
+
+            <input type="submit" value="Search" class="btn btn-blue">
+        </form>
+
+        <a href="/logout" class="btn-red">Logout</a>
+    </div>
+</div>
+
+
+<h3>
+    Search Results
+    <span class="right-btn">
+        <a href="/admin_dash" class="btn btn-black">Go Back</a>
+    </span>
+</h3>
+
+
+{% if results %}
+
+<table>
+    <tr>
+        <th>ID</th>
+
+        {% if key == "company" %}
+            <th>Company Name</th>
+            <th>Email</th>
+            <th>Website</th>
+            <th>Number</th>
+        {% else %}
+            <th>Student Name</th>
+            <th>Email</th>
+            <th>Education</th>
+            <th>CGPA</th>
+        {% endif %}
+
+        <th>Action</th>
+    </tr>
+
+    <tr>
+        <td>{{ results.id }}</td>
+
+        {% if key == "company" %}
+            <td>{{ results.name }}</td>
+            <td>{{ results.email }}</td>
+            <td>{{ results.website }}</td>
+            <td>{{ results.company_no }}</td>
+            <td>
+                <a href="/delete_comp/{{results.id}}" class="btn btn-red">Delete</a>
+
+                {% if results.approval_status == "approved" %}
+                    <a href="/block/{{results.id}}" class="btn btn-red">Block</a>
+                {% elif results.approval_status == "blocked" %}
+                    <a href="/unblock/{{results.id}}" class="btn btn-green">Unblock</a>
+                {% endif %}
+            </td>
+
+        {% else %}
+            <td>{{ results.full_name }}</td>
+            <td>{{ results.email }}</td>
+            <td>{{ results.education }}</td>
+            <td>{{ results.cgpa }}</td>
+            <td>
+                <a href="/delete_std/{{results.id}}" class="btn btn-red">Delete</a>
+
+                {% if results.status == "active" %}
+                    <a href="/std_block/{{results.id}}" class="btn btn-red">Block</a>
+                {% elif results.status == "blocked" %}
+                    <a href="/std_unblock/{{results.id}}" class="btn btn-green">Unblock</a>
+                {% endif %}
+            </td>
+        {% endif %}
+    </tr>
+</table>
+
+
+        {% if key == "company" and jobs %}
+        <h3>Company Jobs</h3>
+
+        <table>
+            <tr>
+                <th>Job ID</th>
+                <th>Job Title</th>
+                <th>Location</th>
+                <th>Salary</th>
+                <th>Status</th>
+            </tr>
+
+            {% for j in jobs %}
+            <tr>
+                <td>{{ j.id }}</td>
+                <td>{{ j.job_title }}</td>
+                <td>{{ j.location }}</td>
+                <td>{{ j.salary }}</td>
+                <td>{{ j.job_status }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        {% if key == "student" and applied_jobs %}
+        <h3>Applied Jobs</h3>
+
+        <table>
+            <tr>
+                <th>Application ID</th>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Job Location</th>
+                <th>Salary</th>
+                <th>Status</th>
+                <th>Applied Date</th>
+            </tr>
+
+            {% for i in applied_jobs %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.jobs.job_title }}</td>
+                <td>{{ i.jobs.company.name }}</td>
+                <td>{{ i.jobs.location }}</td>
+                <td>{{ i.jobs.salary }}</td>
+                <td>{{ i.status }}</td>
+                <td>{{ i.applied_date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+
+{% else %}
+    <p>No results found.</p>
+{% endif %}
+
+</body>
+</html>

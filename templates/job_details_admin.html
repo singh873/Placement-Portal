@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job View</title>
+    <link rel="stylesheet" href="/static/Job_details.css">
+</head>
+<body>
+
+<div class="job-card">
+
+    <!-- Left Section -->
+    <div class="job-left">
+        <h2> Company: {{ view_job.company.name }}</h2>
+        
+
+        <p class="label"> Job Title </p>
+        <p class="value">{{ view_job.job_title }}</p>
+
+        <p class="label">Job Description</p>
+        <p class="value">{{ view_job.job_description }}</p>
+
+        <p><strong class="label">Salary:</strong> {{ view_job.salary }}</p>
+        <p><strong class="label">Location:</strong> {{ view_job.location }}</p>
+
+        <div class="actions">
+            <a href="/job_approve/{{ view_job.id }}" class="btn btn-green">Approve</a>
+            <a href="/job_reject/{{ view_job.id }}" class="btn btn-red">Reject</a>
+            <a href="/admin_dash" class="btn btn-black">Go Back</a>
+        </div>
+    </div>
+
+    
+
+</div>
+
+</body>
+</html>

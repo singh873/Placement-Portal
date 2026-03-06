@@ -1,0 +1,100 @@
+/* Top bar */
+.top-bar {
+    background-color: rgb(18, 159, 215);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #333;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.logout {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+h3 {
+    margin: 15px 0 5px;
+}
+
+/* Create Drive button */
+.right-btn {
+    float: right;
+    margin-bottom: 15px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #aaa;
+    padding: 10px 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+th {
+    background: wheat;
+}
+
+/* Actions column same width */
+th:last-child,
+td:last-child {
+    width: 230px;              
+    white-space: nowrap; 
+}
+
+/* Buttons */
+.btn {
+    border-radius: 6px;
+    border: none;
+    margin: 5px;        
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* Red Button */
+.btn-red {
+    background-color: red;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Green Button */
+.btn-green {
+    background-color: green;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Blue Button */
+.btn-blue {
+    background-color: rgb(18, 159, 215);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: 500;
+}
+/* Black Button */
+.btn-black {
+    background-color: black;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 7px;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: 500;
+}

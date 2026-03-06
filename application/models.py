@@ -1,5 +1,5 @@
 from .database import db
-from datetime import datetime
+from datetime import date
 
 # User Model (Admin and Student)
 
@@ -13,14 +13,16 @@ class User(db.Model):
     education = db.Column(db.String(50))
     cgpa = db.Column(db.String(50))
     address = db.Column(db.String(50))
-    hobby = db.Column(db.String(50))
+    linkdin = db.Column(db.String(100))
+    github = db.Column(db.String(100))
+    hobby = db.Column(db.String(100))
 
 
     # admin or student ka type & status
     type = db.Column(db.String(20), default="student", nullable=False)
     status = db.Column(db.String(20), default="active", nullable=False)
 
-    applications = db.relationship("Application", backref="user")
+    applications = db.relationship("Application",backref="user",cascade="all, delete")
 
 
 
@@ -40,7 +42,7 @@ class Company(db.Model):
     approval_status = db.Column(db.String(20), default="pending", nullable=False)
     status = db.Column(db.String(20), default="active", nullable=False)
 
-    jobs = db.relationship("Jobs", backref="company")
+    jobs = db.relationship("Jobs", backref="company",cascade="all, delete")
 
 # Placement Drive Model
 
@@ -51,14 +53,15 @@ class Jobs(db.Model):
     company_id = db.Column(db.Integer, db.ForeignKey("company.id"), nullable=False)
 
     job_title = db.Column(db.String(50), nullable=False)
-    job_description = db.Column(db.String(200))
-    eligibility = db.Column(db.String(100))
-    salary = db.Column(db.Integer)
-    location = db.Column(db.String(100))
+    job_description = db.Column(db.String(200) ,nullable=False)
+    eligibility = db.Column(db.String(100) ,nullable=False)
+    salary = db.Column(db.Integer ,nullable=False)
+    location = db.Column(db.String(100),nullable=False)
+    job_deadline = db.Column(db.Date)
 
     job_status = db.Column(db.String(20), default="pending", nullable=False)
 
-    applications = db.relationship("Application", backref="jobs")
+    applications = db.relationship("Application", backref="jobs",cascade="all, delete")
 
 
 # Application Model
@@ -67,8 +70,8 @@ class Application(db.Model):
     __tablename__ = "application"
 
     id = db.Column(db.Integer, primary_key=True)
-    student_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    job_id = db.Column(db.Integer, db.ForeignKey("jobs.id"), nullable=False)
+    student_id = db.Column(db.Integer,db.ForeignKey("user.id", ondelete="CASCADE"),nullable=False)
+    job_id = db.Column(db.Integer,db.ForeignKey("jobs.id", ondelete="CASCADE"),nullable=False)
 
     status = db.Column(db.String(20), default="applied", nullable=False)
-    applied_date = db.Column(db.DateTime, default=datetime.today)
+    applied_date = db.Column(db.Date, default=date.today)

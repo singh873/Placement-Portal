@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student History </title>
+
+    <link rel="stylesheet" href="/static/student.css">
+</head>
+<body>
+
+
+    <!-- Header -->
+    <div class="top-bar">
+        <h3> Welcome {{ this_std.full_name }} </h3>
+        <div>
+            <a href="/std_prof_update/{{this_std.id}}" class="btn-black"> Update Profile </a>
+            <a href="/history/{{this_std.id}}" class="btn-black"> History </a>
+            <a href="/login" class="btn-red"> Logout </a>
+        </div>
+    </div>
+
+    <!-- Upcoming Jobs -->
+    
+    <h3>
+        <strong class="label"> Education :</strong> {{ this_std.education }}
+    </h3>
+
+    <h3> Application History
+        <span class="right-btn">
+            <a href="/student_dash/{{this_std.id}}" class="btn btn-black">Go Back</a> 
+        </span>
+    </h3>
+
+    <table>
+        <tr>
+            <th>Sn No.</th>
+            <th>Company</th>
+            <th>Job Title</th>
+            <th>Status</th>
+        </tr>
+
+        {% for i in appli_hist %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i.jobs.company.name }}</td>
+            <td>{{ i.jobs.job_title }}</td>
+            <td>{{ i.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</body>
+</html>
