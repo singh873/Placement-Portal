@@ -466,6 +466,5 @@ def history(std_id):
     this_std=User.query.filter_by(id=std_id).first()
     return render_template("student_history.html",appli_hist=appli_hist,this_std=this_std)
 
-
-
 #student end---------------
+#6 march ko push kiya
