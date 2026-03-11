@@ -237,20 +237,29 @@ def delete_comp(comp_id):
 @app.route("/admin_search/<int:admin_id>")
 def admin_search(admin_id):
 
-    admin=User.query.filter_by(id=admin_id).first()
+    admin = User.query.filter_by(id=admin_id).first()
     key = request.args.get("key")
     search_word = request.args.get("search")
 
-    applied_jobs=None
-    jobs=None
+    applied_jobs = None
+    jobs = None
+    results = None
 
     if key == "student":
-        results = User.query.filter((User.id == search_word) | (User.full_name == search_word) | (User.email == search_word)).first()
-        applied_jobs=Application.query.filter_by(student_id=results.id).all()
-    else:
-        results = Company.query.filter((Company.id == search_word) | (Company.name == search_word) | (Company.email == search_word)).first()
-        jobs=Jobs.query.filter_by(company_id=results.id).all()
-    return render_template("admin_search.html", results=results,admin=admin,key=key,applied_jobs=applied_jobs,jobs=jobs)
+        results = User.query.filter( (User.id == search_word) | (User.full_name == search_word) | (User.email == search_word)).first()
+
+        if results:
+            applied_jobs = Application.query.filter_by(student_id=results.id).all()
+
+    elif key == "company":
+        results = Company.query.filter( (Company.id == search_word) | (Company.name == search_word) | (Company.email == search_word) ).first()
+
+        if results:
+            jobs = Jobs.query.filter_by(company_id=results.id).all()
+
+    return render_template("admin_search.html",admin=admin,results=results,key=key,applied_jobs=applied_jobs,jobs=jobs)
+
+    
 
 
 #admin  end-----------------

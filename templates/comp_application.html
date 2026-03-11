@@ -33,7 +33,7 @@
         </tr>
         {% for i in this_application %}
         <tr>
-            <td>{{ loop.index }}</td>
+            <td>{{ i.id }}</td>
             <td>{{ i.user.full_name }}</td>
             <td>
                 <a href="/review_std_appli/{{i.student_id}}/{{i.job_id}}" class="btn btn-blue"> Review Application </a>

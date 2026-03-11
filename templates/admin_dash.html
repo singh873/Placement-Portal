@@ -19,8 +19,8 @@
 
                 <input type="text" name="search" placeholder="Search by name, id, email" required>
 
-                <select name="key">
-                    <option >Select</option>
+                <select name="key" required >
+                    <option value="" disabled selected >Select</option>
                     <option value="student">Student</option>
                     <option value="company">Company</option>
                 </select>
@@ -46,7 +46,7 @@
         </tr>
         {% for i in approve_company %}
         <tr>
-            <td>{{ loop.index }}</td>
+            <td>{{ i.id }}</td>
             <td>{{ i.name}}</td>
             <td>{{ i.email}}</td>
             <td>{{ i.website}}</td>
@@ -76,7 +76,7 @@
         </tr>
         {% for i in reg_student %}
         <tr>
-            <td>{{ loop.index}}</td>
+            <td>{{ i.id }}</td>
             <td>{{ i.full_name }}</td>
             <td>{{ i.email }}</td>
             <td>{{ i.education }}</td>
@@ -106,7 +106,7 @@
         </tr>
         {% for i in req_company %}
         <tr>
-            <td>{{ loop.index }}</td>
+            <td>{{ i.id }}</td>
             <td>{{ i.name }}</td>
             <td>{{ i.email }}</td>
             <td>{{ i.website }}</td>
@@ -140,7 +140,7 @@
         </tr>
         {%  for i in ongoing_jobs %}
         <tr>
-            <td>{{ loop.index }}</td>
+            <td>{{ i.id }}</td>
             <td>{{ i.company.name }}</td>
             <td>{{ i.job_title }}</td>
             <td>{{ i.eligibility }}</td>
@@ -165,7 +165,7 @@
         </tr>
         {%  for i in req_jobs %}
         <tr>
-            <td>{{ loop.index }}</td>
+            <td>{{ i.id }}</td>
             <td>{{ i.company.name }}</td>
             <td>{{ i.job_title }}</td>
             <td>{{ i.eligibility }}</td>

@@ -35,7 +35,7 @@
         </tr>
         {% for i in active_comp %}
         <tr>
-            <td>{{ loop.index }}</td>
+            <td>{{ i.id }}</td>
             <td>{{ i.name }}</td>
             <td>
                 <a href="/view_job/{{i.id}}/{{this_student.id}}" class="btn btn-blue"> View Jobs </a>
@@ -59,7 +59,7 @@
         {% for i in appiled_jobs %}
 
         <tr>
-            <td>{{loop.index}}</td>
+            <td>{{i.id}}</td>
             <td>{{i.jobs.company.name}}</td>
             <td>{{i.jobs.job_title}}</td>
             <td>{{i.applied_date}}</td>

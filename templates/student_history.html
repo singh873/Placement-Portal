@@ -41,7 +41,7 @@
 
         {% for i in appli_hist %}
         <tr>
-            <td>{{ loop.index }}</td>
+            <td>{{ i.id }}</td>
             <td>{{ i.jobs.company.name }}</td>
             <td>{{ i.jobs.job_title }}</td>
             <td>{{ i.status }}</td>
