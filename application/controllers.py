@@ -476,4 +476,4 @@ def history(std_id):
     return render_template("student_history.html",appli_hist=appli_hist,this_std=this_std)
 
 #student end---------------
-#last comit 8 march
+#last comit 11 march
